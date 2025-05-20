@@ -86,17 +86,17 @@ public_ip=""
 public_label=""
 
 # Check for wlan1
-public_ip=$(ip -4 addr show wlan1 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}/\d+')
+public_ip=$(ip -4 addr show wlan1 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 if [ -n "$public_ip" ]; then
   public_label="wlan1"
 else
   # Check for wlan0 if wlan1 not found
-  public_ip=$(ip -4 addr show wlan0 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}/\d+')
+  public_ip=$(ip -4 addr show wlan0 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
   if [ -n "$public_ip" ]; then
     public_label="wlan0"
   else
     # Check for rmnet_data3 if neither wlan interface is found
-    public_ip=$(ip -4 addr show rmnet_data3 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}/\d+')
+    public_ip=$(ip -4 addr show rmnet_data3 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
     if [ -n "$public_ip" ]; then
       public_label="rmnet_data3"
     fi
