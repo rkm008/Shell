@@ -64,10 +64,22 @@ center_text() {
 uptime_info=$(uptime -p | sed 's/up //')
 line1="Uptime: $uptime_info"
 
-# Local IP for rmnet_data2 (mobile data interface)
+# Local IP: check rmnet_data2 first, then rmnet_data1
+local_ip=""
+local_interface=""
+
 local_ip=$(ip -4 addr show rmnet_data2 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+if [ -n "$local_ip" ]; then
+  local_interface="rmnet_data2"
+else
+  local_ip=$(ip -4 addr show rmnet_data1 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+  if [ -n "$local_ip" ]; then
+    local_interface="rmnet_data1"
+  fi
+fi
+
 [ -z "$local_ip" ] && local_ip="Not found"
-line2="Local IP (rmnet_data2): $local_ip"
+line2="Local IP (${local_interface}): $local_ip"
 
 # Public IP: prioritize wlan1, then wlan0, then rmnet_data3
 public_ip=""
