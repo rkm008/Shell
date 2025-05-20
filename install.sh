@@ -21,6 +21,7 @@ pkg update -y && pkg upgrade -y
 echo "[*] Installing required packages..."
 pkg install -y zsh git fastfetch curl
 pkg install ncurses-utils
+pkg install iproute2
 pkg install ruby
 gem install lolcat
 
