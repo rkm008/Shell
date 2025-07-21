@@ -2,7 +2,7 @@
 
 edit .bashrc
 
-zsh
+exec zsh -l
 
 PS1="→\[\e[32m\]R.K.M\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\$ "
 
