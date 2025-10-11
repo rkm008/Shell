@@ -161,6 +161,12 @@ PROMPT=$'%F{green}→R.K.M%f:%F{blue}%~%f$ '
 # Aliases
 alias update="pkg update && pkg upgrade"
 alias cls="clear"
+alias p="python"
+alias sd="cd /sdcard"
+alias pj="cd /sdcard/project"
+alias ap="apt update && apt upgrade -y"
+alias mm="p yt.py"
+alias ca="pkg install ca-certificates openssl -y"
 
 EOF
 
