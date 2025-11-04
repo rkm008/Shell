@@ -159,7 +159,7 @@ bindkey "^[[B" down-line-or-beginning-search
 PROMPT=$'%F{green}→R.K.M%f:%F{blue}%~%f$ '
 
 # Aliases
-alias update="pkg update && pkg upgrade"
+alias pk="pkg update && pkg upgrade"
 alias cls="clear"
 alias p="python"
 alias sd="cd /sdcard"
